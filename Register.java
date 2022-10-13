@@ -120,9 +120,10 @@ class Test extends JFrame implements ActionListener
 		regt.add(ok);
 		back=new JButton("Back");
 		done=new JButton("DONE");
-		back.setBounds(10,750,100,40);
+		back.setBounds(10,500,100,40);
+		done.setBounds(840,500,100,40);
+		regt.add(done);
 		regt.add(back);
-	
 		}
 	} 		
 		
