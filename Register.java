@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 class Test extends JFrame implements ActionListener
 {
 	JPanel top,left,right,regt;
@@ -82,6 +83,8 @@ class Test extends JFrame implements ActionListener
 	map.setForeground(Color.WHITE);
 	
 	reg.addActionListener(this);
+	login.addActionListener(this);
+	faculty.addActionListener(this);
 	top.add(head);
 	right.add(login);
 	right.add(reg);
@@ -93,6 +96,7 @@ class Test extends JFrame implements ActionListener
 	add(left);
 	add(right);
 	add(top);
+
 	
 	
 	
@@ -100,12 +104,15 @@ class Test extends JFrame implements ActionListener
 }
 	public void actionPerformed(ActionEvent e)
 	{
+			JTextField username=new JTextField();
+			JTextField password = new JTextField();
 		if(e.getActionCommand().equals("REGISTER"))
 		{
 		right.setVisible(false);
 		regt=new JPanel();
 		regt.setBounds(500,150,950,550);
 	    regt.setBackground(Color.LIGHT_GRAY);
+		back.addActionListener(this);
 	    regt.setLayout(null);
 	    add(regt);
 		String opt[]={"Doctor","Patient","Faculty"};
@@ -124,10 +131,72 @@ class Test extends JFrame implements ActionListener
 		done.setBounds(840,500,100,40);
 		regt.add(done);
 		regt.add(back);
+		done.addActionListener(this);
+
+
 		}
-	} 		
-		
+		else if(e.getActionCommand().equals("LOGIN")){
+			right.setVisible(false);
+			JPanel loginp=new JPanel();
+			loginp.setBounds(500,150,950,550);
+			loginp.setBackground(Color.LIGHT_GRAY);
+			loginp.setLayout(null);
+			add(loginp);
+			JLabel userl=new JLabel("USERNAME");
+			JLabel passl=new JLabel("PASSWORD");
+			JButton login1=new JButton("LOGIN");
+			userl.setBounds(10,10,180,40);
+			passl.setBounds(10,70,180,40);
+			username.setBounds(210,10,180,40);
+			password.setBounds(210,70,180,40);
+			login1.setBounds(130,150,180,40);
+			loginp.add(userl);
+			loginp.add(passl);
+			loginp.add(username);
+			loginp.add(password);
+			loginp.add(login1);
+			login1.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+
+			 if(username.getText().toString().equals("CITY")&&password.getText().toString().equals("ADMIN")){
+				loginp.setVisible(false);
+				right.setVisible(true);
+				new Test();
+
+
+			 }
+				}
+			});
+
+
+		}
+		else if(e.getActionCommand().equals("FACULTY")){
+			right.setVisible(false);
+			JPanel F=new JPanel();
+			JButton backf=new JButton();
+			F.setBounds(500,150,950,550);
+			F.setBackground(Color.LIGHT_GRAY);
+			F.setLayout(null);
+			JLabel faculty=new JLabel("FACULTY");
+			JLabel facultyd=new JLabel("There are 68 Surgeons, 123 doctors ,100 nurses ,150 cleaning staffs,");
+			F.add(faculty);
+			F.add(facultyd);
+			F.add(backf);
+			backf.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					F.setVisible(false);
+					right.setVisible(true);
+				}
+			});
+
+		}
+
+	}
+
 }
+
 class HMS1
 {
 	public static void main(String args[])
